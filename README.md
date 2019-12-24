@@ -5,4 +5,4 @@
 *** Obrigado novamente! Agora vamos rodar esse projeto incrível :D
 -->
 
-# SuperiorShop
+# Amazing Shop
