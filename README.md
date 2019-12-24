@@ -4,4 +4,5 @@
 *** Request ou abra uma Issue com a tag "sugestão".
 *** Obrigado novamente! Agora vamos rodar esse projeto incrível :D
 -->
-# SuperiorShop
+
+# Amazing Shop
