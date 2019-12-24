@@ -1,4 +1,4 @@
-package com.superiorshop;
+package com.amazing.shop;
 
 import android.app.Application;
 import android.content.Context;

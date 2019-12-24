@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'SuperiorShop' do
-  # Pods for SuperiorShop
+target 'AmazingShop' do
+  # Pods for AmazingShop
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'SuperiorShop' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'SuperiorShopTests' do
+  target 'AmazingShopTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'SuperiorShop' do
   use_native_modules!
 end
 
-target 'SuperiorShop-tvOS' do
-  # Pods for SuperiorShop-tvOS
+target 'AmazingShop-tvOS' do
+  # Pods for AmazingShop-tvOS
 
-  target 'SuperiorShop-tvOSTests' do
+  target 'AmazingShop-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
