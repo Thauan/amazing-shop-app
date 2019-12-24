@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.superiorshop"
+        applicationId "com.amazing.shop"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
