@@ -1,8 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
+import {StatusBar} from 'react-native';
 import * as styled from './styles';
-import {StatusBar, Text, ScrollView, View} from 'react-native';
+
+// import NavigationService from '~/services/NavigationService';
 
 function BootScreen(props) {
+  console.tron.log(props);
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#3f966b" />
@@ -15,23 +18,23 @@ function BootScreen(props) {
             Com a melhor.
           </styled.TextHeader>
         </styled.Header>
-        <ScrollView
+        <styled.Scroll
           horizontal
-          pagingEnabled={true}
           decelerationRate={0}
-          onScroll={event => {
-            this.yOffset = event.nativeEvent.contentOffset.y;
-          }}
-          onScrollEndDrag={event => {
-            this.yOffset = event.nativeEvent.contentOffset.y;
-          }}
           scrollEventThrottle={160}
-          snapToInterval={400} //your element width
-          snapToAlignment={'center'}
-          showsHorizontalScrollIndicator={true}>
+          snapToInterval={300} //your element width
+          snapToAlignment={'center'}>
           <styled.ImageSlide source={require('../../assets/shopping.png')} />
           <styled.ImageSlide source={require('../../assets/shopping2.png')} />
-        </ScrollView>
+        </styled.Scroll>
+        <styled.BoxButtons>
+          <styled.Buttons>
+            <styled.TextButtons>Explorar produtos</styled.TextButtons>
+          </styled.Buttons>
+          <styled.Buttons onPress={() => props.navigation.navigate('Login')}>
+            <styled.TextButtons>Entrar na conta</styled.TextButtons>
+          </styled.Buttons>
+        </styled.BoxButtons>
       </styled.Container>
     </>
   );

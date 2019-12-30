@@ -10,6 +10,11 @@ export const Container = styled.SafeAreaView`
   background: #f9fbfa;
 `;
 
+export const Scroll = styled.ScrollView`
+  flex: 1;
+  background: #f9fbfa;
+`;
+
 export const Header = styled.View`
   width: ${wp('100%')};
   flex-direction: row;
@@ -25,13 +30,35 @@ export const TextHeader = styled.Text`
 `;
 
 export const ImageSlide = styled.Image`
-  padding: 20px;
   width: ${wp('100%')};
-  height: ${hp('40%')};
+  height: ${hp('35%')};
   background: black;
 `;
 
 export const Brand = styled.Image`
   height: ${hp('20%')};
   width: ${wp('100%')};
+`;
+
+export const BoxButtons = styled.View`
+  flex: 2;
+  margin-left: 40px;
+  margin-right: 40px;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const Buttons = styled.TouchableOpacity`
+  height: ${hp('9%')};
+  border-radius: 20px;
+  background: #3f966b;
+  margin: 10px;
+`;
+
+export const TextButtons = styled.Text`
+  color: #fff;
+  font-size: 23px;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
 `;
