@@ -1,11 +1,43 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {StatusBar} from 'react-native';
 import * as styled from './styles';
+import Carousel from 'react-native-snap-carousel';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-// import NavigationService from '~/services/NavigationService';
+const SLIDES = [
+  {
+    name: 'Produto 1',
+    resume: 'este é o produto 1',
+    image: require('../../assets/shopping2.png'),
+  },
+  {
+    name: 'Produto 2',
+    resume: 'este é o produto 2',
+    image: require('../../assets/shopping.png'),
+  },
+  {
+    name: 'Produto 3',
+    resume: 'este é o produto 3',
+    image: require('../../assets/shopping2.png'),
+  },
+];
 
 function BootScreen(props) {
-  console.tron.log(props);
+  function _renderItem({item, index}) {
+    const snap = refContainer.current;
+
+    return (
+      <>
+        <styled.ImageSlideView key={index}>
+          <styled.ImageSlide resizeMode="cover" source={item.image} />
+        </styled.ImageSlideView>
+      </>
+    );
+  }
+
+  const refContainer = useRef(null);
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#3f966b" />
@@ -15,22 +47,28 @@ function BootScreen(props) {
             Compre.
           </styled.TextHeader>
           <styled.TextHeader color={'#252525'} size={30}>
+            {' '}
             Com a melhor.
           </styled.TextHeader>
         </styled.Header>
-        <styled.Scroll
-          horizontal
-          decelerationRate={0}
-          scrollEventThrottle={160}
-          snapToInterval={300} //your element width
-          snapToAlignment={'center'}>
-          <styled.ImageSlide source={require('../../assets/shopping.png')} />
-          <styled.ImageSlide source={require('../../assets/shopping2.png')} />
-        </styled.Scroll>
+        <Carousel
+          ref={refContainer}
+          data={SLIDES}
+          sliderWidth={wp('100%')}
+          itemWidth={wp('100%')}
+          sliderHeight={hp('40%')}
+          // enableSnap={true}
+          // snapOnAndroid={true}
+          renderItem={_renderItem}
+          scrollEnabled={true}
+          layout={'stack'}
+          autoplay={true}
+          loop={true}
+        />
         <styled.BoxButtons>
-          <styled.Buttons>
+          {/* <styled.Buttons>
             <styled.TextButtons>Explorar produtos</styled.TextButtons>
-          </styled.Buttons>
+          </styled.Buttons> */}
           <styled.Buttons onPress={() => props.navigation.navigate('Login')}>
             <styled.TextButtons>Entrar na conta</styled.TextButtons>
           </styled.Buttons>

@@ -4,15 +4,30 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-export const Container = styled.View`
-  display: flex;
+export const Container = styled.KeyboardAvoidingView`
   background: #fff;
 `;
 
-export const ContainerBrand = styled.View`
-  padding-top: 20px;
+export const ContainerButtonsUser = styled.View`
+  flex: 1;
+`;
+
+export const ButtonsUser = styled.TouchableOpacity`
   width: ${wp('100%')};
-  height: ${hp('35%')};
+  margin-top: 10px;
+`;
+
+export const TextButtonsUser = styled.Text`
+  color: #3f966b;
+  font-size: 19px;
+  text-align: center;
+`;
+
+export const ContainerBrand = styled.View`
+  flex: 1;
+  margin-top: 30px;
+  width: ${wp('100%')};
+  height: ${hp('30%')};
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 `;
@@ -23,7 +38,8 @@ export const Brand = styled.Image`
 `;
 
 export const ContainerForm = styled.View`
-  display: flex;
+  /* flex: 1; */
+  width: ${wp('100%')};
 `;
 
 export const Input = styled.TextInput.attrs(props => ({
@@ -37,7 +53,7 @@ export const Input = styled.TextInput.attrs(props => ({
 }))`
   padding-left: 30px;
   width: ${wp('100%')};
-  height: ${hp('40%')};
+  height: ${hp('10%')};
   font-size: 18px;
 `;
 
@@ -63,7 +79,3 @@ export const TextButtons = styled.Text`
   text-align: center;
   padding: 10px;
 `;
-
-// export const ContainerFooter = styled.View`
-//   height: ${hp('100%')};
-// `;
