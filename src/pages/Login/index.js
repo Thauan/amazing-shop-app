@@ -11,10 +11,10 @@ function Login(props) {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#3f966b" />
-      <styled.Container>
-        <styled.ContainerBrand>
-          <styled.Brand source={logo} resizeMode="contain" />
-        </styled.ContainerBrand>
+      <styled.ContainerBrand>
+        <styled.Brand source={logo} resizeMode="contain" />
+      </styled.ContainerBrand>
+      <styled.Container behavior="margin" enabled>
         <styled.ContainerForm>
           <styled.LineUp>
             <styled.Input
@@ -34,10 +34,21 @@ function Login(props) {
             />
           </styled.LineUp>
         </styled.ContainerForm>
-        <styled.Buttons>
-          <styled.TextButtons>Entrar</styled.TextButtons>
-        </styled.Buttons>
       </styled.Container>
+      <styled.ContainerButtonsUser>
+        <styled.ButtonsUser>
+          <styled.TextButtonsUser>
+            Esqueceu sua senha? Clique aqui
+          </styled.TextButtonsUser>
+        </styled.ButtonsUser>
+        <styled.ButtonsUser>
+          <styled.TextButtonsUser>Cadastre-se aqui</styled.TextButtonsUser>
+        </styled.ButtonsUser>
+      </styled.ContainerButtonsUser>
+
+      <styled.Buttons>
+        <styled.TextButtons>Entrar</styled.TextButtons>
+      </styled.Buttons>
     </>
   );
 }

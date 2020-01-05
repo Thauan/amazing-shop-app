@@ -29,9 +29,17 @@ export const TextHeader = styled.Text`
   font-weight: bold;
 `;
 
+export const ImageSlideView = styled.View`
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  /* background: black; */
+  elevation: 4;
+  /* height: 200px; */
+`;
+
 export const ImageSlide = styled.Image`
-  width: ${wp('100%')};
-  height: ${hp('35%')};
   background: black;
 `;
 
@@ -41,18 +49,20 @@ export const Brand = styled.Image`
 `;
 
 export const BoxButtons = styled.View`
-  flex: 2;
-  margin-left: 40px;
+  margin-left: 49px;
   margin-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   flex-direction: column;
   justify-content: center;
 `;
 
 export const Buttons = styled.TouchableOpacity`
   height: ${hp('9%')};
-  border-radius: 20px;
+  border-radius: 10px;
   background: #3f966b;
-  margin: 10px;
+  margin: 9px;
+  elevation: 4;
 `;
 
 export const TextButtons = styled.Text`
