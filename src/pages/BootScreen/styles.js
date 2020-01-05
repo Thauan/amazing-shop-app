@@ -5,7 +5,6 @@ import {
 } from 'react-native-responsive-screen';
 
 export const Container = styled.SafeAreaView`
-  display: flex;
   flex: 1;
   background: #f9fbfa;
 `;
@@ -25,7 +24,7 @@ export const Header = styled.View`
 export const TextHeader = styled.Text`
   color: ${props => props.color};
   font-size: ${props => props.size};
-  /* font-family: Roboto; */
+  font-family: Roboto;
   font-weight: bold;
 `;
 
@@ -34,9 +33,8 @@ export const ImageSlideView = styled.View`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  /* background: black; */
   elevation: 4;
-  /* height: 200px; */
+  border-radius: 40px;
 `;
 
 export const ImageSlide = styled.Image`
@@ -71,4 +69,25 @@ export const TextButtons = styled.Text`
   justify-content: center;
   text-align: center;
   padding: 10px;
+`;
+
+export const BoxControls = styled.View`
+  margin-left: 30%;
+  margin-right: 30%;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ButtonsControl = styled.TouchableOpacity`
+  padding: 5px;
+`;
+
+export const TextControl = styled.Text`
+  color: #3f966b;
+  font-size: 30px;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  elevation: 3;
 `;

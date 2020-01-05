@@ -25,8 +25,6 @@ const SLIDES = [
 
 function BootScreen(props) {
   function _renderItem({item, index}) {
-    const snap = refContainer.current;
-
     return (
       <>
         <styled.ImageSlideView key={index}>
@@ -37,6 +35,7 @@ function BootScreen(props) {
   }
 
   const refContainer = useRef(null);
+  const snap = refContainer.current;
 
   return (
     <>
@@ -55,20 +54,22 @@ function BootScreen(props) {
           ref={refContainer}
           data={SLIDES}
           sliderWidth={wp('100%')}
-          itemWidth={wp('100%')}
-          sliderHeight={hp('40%')}
-          // enableSnap={true}
-          // snapOnAndroid={true}
+          itemWidth={wp('90%')}
           renderItem={_renderItem}
           scrollEnabled={true}
-          layout={'stack'}
+          firstItem={0}
           autoplay={true}
           loop={true}
         />
         <styled.BoxButtons>
-          {/* <styled.Buttons>
-            <styled.TextButtons>Explorar produtos</styled.TextButtons>
-          </styled.Buttons> */}
+          <styled.BoxControls>
+            <styled.ButtonsControl onPress={() => snap.snapToPrev()}>
+              <styled.TextControl>{'<'}</styled.TextControl>
+            </styled.ButtonsControl>
+            <styled.ButtonsControl onPress={() => snap.snapToNext()}>
+              <styled.TextControl>{'>'}</styled.TextControl>
+            </styled.ButtonsControl>
+          </styled.BoxControls>
           <styled.Buttons onPress={() => props.navigation.navigate('Login')}>
             <styled.TextButtons>Entrar na conta</styled.TextButtons>
           </styled.Buttons>
