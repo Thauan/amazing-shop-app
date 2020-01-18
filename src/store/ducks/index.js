@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
+import auth from '~/store/ducks/auth';
 
 const reducers = combineReducers({
   // Remova essa linha depois de adicionar seus ducks
-  example: () => [],
+  // example: () => [],
+  auth,
 });
 
 export default reducers;

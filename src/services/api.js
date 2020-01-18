@@ -1,15 +1,16 @@
 import {create} from 'apisauce';
 import AsyncStorage from '@react-native-community/async-storage';
 import Reactotron from 'reactotron-react-native';
+import {BASE_URL_API} from 'react-native-dotenv';
 
 /**
  * Create an Axios Client with defaults
  */
 
-const base = 'https://09c36472.ngrok.io';
+const BASE_URL = `${BASE_URL_API}`;
 
 const client = create({
-  baseURL: `${base}/api/`,
+  baseURL: `${BASE_URL}/api/`,
 });
 
 client.addAsyncRequestTransform(request => async () => {
