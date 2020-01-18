@@ -6,3 +6,5 @@
 -->
 
 # Amazing Shop
+
+<img src="https://i.imgur.com/YpuM5A0.jpg" width="300"/> <img src="https://i.imgur.com/6cod1ae.jpg" width="300"/>
