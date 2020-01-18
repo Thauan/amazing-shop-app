@@ -57,7 +57,7 @@ const TransitionConfiguration = () => {
   };
 };
 
-const MainStackNavigator = createStackNavigator(
+const AuthStackNavigator = createStackNavigator(
   {
     Init: {
       screen: BootScreen,
@@ -79,6 +79,14 @@ const MainStackNavigator = createStackNavigator(
         title: 'Amazing Shop',
       }),
     },
+  },
+  {
+    transitionConfig: TransitionConfiguration,
+  },
+);
+
+const MainStackNavigator = createStackNavigator(
+  {
     Main: {
       screen: Main,
       navigationOptions: () => ({
@@ -92,14 +100,13 @@ const MainStackNavigator = createStackNavigator(
   },
   {
     transitionConfig: TransitionConfiguration,
-    // transitionConfig: navigationConfig,
   },
 );
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Login: MainStackNavigator,
-    Main: Main,
+    Login: AuthStackNavigator,
+    Main: MainStackNavigator,
   }),
 );
 
