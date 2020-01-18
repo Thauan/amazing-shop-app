@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import * as styled from './styles';
 import {StatusBar} from 'react-native';
+import {connect} from 'react-redux';
+import {Creators as authCreators} from '~/store/ducks/auth';
 
 const logo = require('../../assets/shopping-bag-two.png');
 
 function Login(props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('thaubr28@gmail.com');
+  const [password, setPassword] = useState('secret');
+
+  function authLogin() {
+    props.dispatch(authCreators.login(email, password));
+  }
 
   return (
     <>
@@ -46,11 +52,18 @@ function Login(props) {
         </styled.ButtonsUser>
       </styled.ContainerButtonsUser>
 
-      <styled.Buttons>
+      <styled.Buttons onPress={() => authLogin()}>
         <styled.TextButtons>Entrar</styled.TextButtons>
       </styled.Buttons>
     </>
   );
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  auth: state.auth.user,
+  // loading: state.auth.loading,
+});
+
+export default connect(mapStateToProps, null)(Login);
+
+// export default Login;

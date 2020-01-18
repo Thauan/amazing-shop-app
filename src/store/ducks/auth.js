@@ -5,18 +5,18 @@ export const Types = {
   LOGOUT: 'auth/LOGOUT',
 };
 
-const initialState = {
+const INITIAL_STATE = {
   isLogged: false,
   token: null,
   user: {},
 };
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
+export default function reducer(state = INITIAL_STATE, {type, payload}) {
+  switch (type) {
     case Types.LOGIN:
-      return {...state};
+      return {...state, loading: true};
     case Types.LOGIN_SUCCESS:
-      return {...state, user: action.data, loading: false};
+      return {...state, user: payload.data, loading: false};
     case Types.LOGOUT:
       return {...state};
     default:
@@ -24,27 +24,43 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function login(email, password) {
-  return {
+export const Creators = {
+  login: (email, password) => ({
     type: Types.LOGIN,
-    payload: {
-      email,
-      password,
-    },
-  };
-}
+    payload: {email, password},
+  }),
 
-export function authSuccess(user) {
-  return {
+  authSuccess: user => ({
     type: Types.LOGIN_SUCCESS,
-    payload: {
-      user,
-    },
-  };
-}
+    payload: {user},
+  }),
 
-export function logout() {
-  return {
+  logout: () => ({
     type: Types.LOGOUT,
-  };
-}
+  }),
+};
+
+// export function login(email, password) {
+//   return {
+//     type: Types.LOGIN,
+//     payload: {
+//       email,
+//       password,
+//     },
+//   };
+// }
+
+// export function authSuccess(user) {
+//   return {
+//     type: Types.LOGIN_SUCCESS,
+//     payload: {
+//       user,
+//     },
+//   };
+// }
+
+// export function logout() {
+//   return {
+//     type: Types.LOGOUT,
+//   };
+// }

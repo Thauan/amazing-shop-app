@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 if (__DEV__) {
   const tron = Reactotron.configure({
     name: 'Amazing Shop',
-    host: '10.0.92.102',
+    host: '10.0.92.100',
   })
     .use(reactotronRedux())
     .use(sagaPlugin())

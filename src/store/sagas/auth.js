@@ -16,7 +16,8 @@ export function* authLogin({payload: {email, password}}) {
       ['@user', JSON.stringify(data.user)],
     ]);
 
-    // yield call([NavigationService, 'navigate'], 'Main');
+    yield call([NavigationService, 'navigate'], 'Main');
+    // yield call(this.props.navigation.navigate('Main'));
   } catch (error) {
     console.tron.log(error);
   }

@@ -5,6 +5,7 @@ import {Animated, Easing} from 'react-native';
 // Page imports
 import Login from '~/pages/Login';
 import BootScreen from '~/pages/BootScreen';
+import Main from '~/pages/Main';
 
 let SlideFromRight = (index, position, width) => {
   // const inputRange = [index - 1, index, index + 1];
@@ -37,7 +38,7 @@ let CollapseExpand = (index, position) => {
 const TransitionConfiguration = () => {
   return {
     transitionSpec: {
-      duration: 750,
+      duration: 200,
       easing: Easing.out(Easing.poly(4)),
       timing: Animated.timing,
       useNativeDriver: true,
@@ -78,6 +79,16 @@ const MainStackNavigator = createStackNavigator(
         title: 'Amazing Shop',
       }),
     },
+    Main: {
+      screen: Main,
+      navigationOptions: () => ({
+        headerStyle: {
+          backgroundColor: '#3f966b',
+        },
+        headerTintColor: '#fff',
+        title: 'Amazing Shop',
+      }),
+    },
   },
   {
     transitionConfig: TransitionConfiguration,
@@ -88,6 +99,7 @@ const MainStackNavigator = createStackNavigator(
 const Routes = createAppContainer(
   createSwitchNavigator({
     Login: MainStackNavigator,
+    Main: Main,
   }),
 );
 
