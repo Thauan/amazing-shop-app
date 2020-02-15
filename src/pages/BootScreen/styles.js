@@ -6,7 +6,7 @@ import {
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #f9fbfa;
+  background: #3f966b;
 `;
 
 export const Scroll = styled.ScrollView`
@@ -57,14 +57,12 @@ export const BoxButtons = styled.View`
 
 export const Buttons = styled.TouchableOpacity`
   height: ${hp('9%')};
-  border-radius: 10px;
-  background: #3f966b;
+  background: #fff;
   margin: 9px;
-  elevation: 4;
 `;
 
 export const TextButtons = styled.Text`
-  color: #fff;
+  color: #3f966b;
   font-size: 23px;
   justify-content: center;
   text-align: center;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import * as styled from './styles';
-import {StatusBar} from 'react-native';
+import {StatusBar, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {Creators as authCreators} from '~/store/ducks/auth';
 
@@ -14,34 +14,47 @@ function Login(props) {
     props.dispatch(authCreators.login(email, password));
   }
 
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 10;
+
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#3f966b" />
-      <styled.ContainerBrand>
-        <styled.Brand source={logo} resizeMode="contain" />
-      </styled.ContainerBrand>
-      <styled.Container behavior="margin" enabled>
-        <styled.ContainerForm>
-          <styled.LineUp>
-            <styled.Input
-              autoCapitalize="none"
-              placeholder="E-mail"
-              value={email}
-              autoFocus
-              onChangeText={e => setEmail(e)}
-            />
-          </styled.LineUp>
-          <styled.LineUp>
-            <styled.Input
-              autoCapitalize="none"
-              placeholder="Senha"
-              value={password}
-              onChangeText={e => setPassword(e)}
-            />
-          </styled.LineUp>
-        </styled.ContainerForm>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
+      <styled.Container
+        behavior="position"
+        keyboardVerticalOffset={keyboardVerticalOffset}>
+        <styled.ImgBackground
+          source={{
+            uri:
+              'https://abrilsuperinteressante.files.wordpress.com/2016/09/super_imgmeninas_fazendo_compras.jpg',
+          }}
+          imageStyle={{opacity: 0.2}}>
+          <styled.ContainerBrand>
+            <styled.Brand source={logo} resizeMode="contain" />
+          </styled.ContainerBrand>
+          <styled.ContainerForm>
+            <styled.LineUp>
+              <styled.Input
+                autoCapitalize="none"
+                placeholder="E-mail"
+                value={email}
+                autoFocus
+                onChangeText={e => setEmail(e)}
+              />
+            </styled.LineUp>
+            <styled.LineUp>
+              <styled.Input
+                autoCapitalize="none"
+                placeholder="Senha"
+                value={password}
+                onChangeText={e => setPassword(e)}
+              />
+            </styled.LineUp>
+          </styled.ContainerForm>
+        </styled.ImgBackground>
       </styled.Container>
-      <styled.ContainerButtonsUser>
+
+      {/* <styled.ContainerButtonsUser>
         <styled.ButtonsUser>
           <styled.TextButtonsUser>
             Esqueceu sua senha? Clique aqui
@@ -50,7 +63,7 @@ function Login(props) {
         <styled.ButtonsUser>
           <styled.TextButtonsUser>Cadastre-se aqui</styled.TextButtonsUser>
         </styled.ButtonsUser>
-      </styled.ContainerButtonsUser>
+      </styled.ContainerButtonsUser> */}
 
       <styled.Buttons onPress={() => authLogin()}>
         <styled.TextButtons>Entrar</styled.TextButtons>
@@ -65,5 +78,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(Login);
-
-// export default Login;

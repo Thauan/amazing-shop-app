@@ -39,10 +39,10 @@ function BootScreen(props) {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#3f966b" />
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <styled.Container>
         <styled.Header>
-          <styled.TextHeader color={'#3f966b'} size={30}>
+          <styled.TextHeader color={'#fff'} size={30}>
             Compre.
           </styled.TextHeader>
           <styled.TextHeader color={'#252525'} size={30}>

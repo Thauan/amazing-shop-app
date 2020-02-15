@@ -63,9 +63,9 @@ const AuthStackNavigator = createStackNavigator(
       screen: BootScreen,
       navigationOptions: () => ({
         headerStyle: {
-          backgroundColor: '#3f966b',
+          backgroundColor: '#fff',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#3f966b',
         title: 'Amazing Shop',
       }),
     },
@@ -73,9 +73,9 @@ const AuthStackNavigator = createStackNavigator(
       screen: Login,
       navigationOptions: () => ({
         headerStyle: {
-          backgroundColor: '#3f966b',
+          backgroundColor: '#fff',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#3f966b',
         title: 'Amazing Shop',
       }),
     },
@@ -91,9 +91,9 @@ const MainStackNavigator = createStackNavigator(
       screen: Main,
       navigationOptions: () => ({
         headerStyle: {
-          backgroundColor: '#3f966b',
+          backgroundColor: '#fff',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#3f966b',
         title: 'Amazing Shop',
       }),
     },
