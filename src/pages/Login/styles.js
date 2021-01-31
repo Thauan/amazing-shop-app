@@ -5,18 +5,12 @@ import {
 } from 'react-native-responsive-screen';
 
 export const Container = styled.KeyboardAvoidingView`
-  background: #3f966b;
-  /* background: url('https://abrilsuperinteressante.files.wordpress.com/2016/09/super_imgmeninas_fazendo_compras.jpg'); */
-  flex: 1;
+  background: #2e2e97;
 `;
 
 export const ImgBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
-  /* background: rgba(63, 150, 107); */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* opacity: 0.7; */
 `;
 
 export const ContainerButtonsUser = styled.View`
@@ -48,7 +42,8 @@ export const Brand = styled.Image`
 
 export const ContainerForm = styled.View`
   width: ${wp('100%')};
-  flex: 1;
+  flex: 2;
+  display: flex;
 `;
 
 export const Input = styled.TextInput.attrs(props => ({

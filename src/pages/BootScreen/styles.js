@@ -6,7 +6,13 @@ import {
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #3f966b;
+  background: #2e2e97;
+`;
+
+export const Background = styled.View`
+background: #2e2e97;
+flex: 1;
+display: flex;
 `;
 
 export const Scroll = styled.ScrollView`
@@ -47,12 +53,14 @@ export const Brand = styled.Image`
 `;
 
 export const BoxButtons = styled.View`
-  margin-left: 49px;
-  margin-right: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 30px;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+`;
+
+export const TextButton = styled.Text`
+  font-size: 18px;
 `;
 
 export const Buttons = styled.TouchableOpacity`

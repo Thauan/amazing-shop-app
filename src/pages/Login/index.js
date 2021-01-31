@@ -18,20 +18,6 @@ function Login(props) {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-
-      <styled.Container
-        behavior="position"
-        keyboardVerticalOffset={keyboardVerticalOffset}>
-        <styled.ImgBackground
-          source={{
-            uri:
-              'https://abrilsuperinteressante.files.wordpress.com/2016/09/super_imgmeninas_fazendo_compras.jpg',
-          }}
-          imageStyle={{opacity: 0.2}}>
-          <styled.ContainerBrand>
-            <styled.Brand source={logo} resizeMode="contain" />
-          </styled.ContainerBrand>
           <styled.ContainerForm>
             <styled.LineUp>
               <styled.Input
@@ -51,8 +37,6 @@ function Login(props) {
               />
             </styled.LineUp>
           </styled.ContainerForm>
-        </styled.ImgBackground>
-      </styled.Container>
 
       {/* <styled.ContainerButtonsUser>
         <styled.ButtonsUser>

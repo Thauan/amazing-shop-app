@@ -2,7 +2,7 @@ import {put, call} from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Creators as AuthCreators} from '~/store/ducks/auth';
 import api from '~/services/api';
-import NavigationService from '~/services/NavigationService';
+// import NavigationService from '~/services/NavigationService';
 
 export function* authLogin({payload: {email, password}}) {
   try {
@@ -16,8 +16,8 @@ export function* authLogin({payload: {email, password}}) {
       ['@user', JSON.stringify(data.user)],
     ]);
 
-    yield call([NavigationService, 'navigate'], 'Main');
-    // yield call(this.props.navigation.navigate('Main'));
+    // yield call([NavigationService, 'navigate'], 'Main');
+
   } catch (error) {
     console.tron.log(error);
   }

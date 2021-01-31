@@ -1,9 +1,12 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {StatusBar} from 'react-native';
-import * as styled from './styles';
+import React, { useEffect, useState, useRef } from 'react';
+import { StatusBar, Text, View } from 'react-native';
+import * as S from './styles';
 import Carousel from 'react-native-snap-carousel';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Button } from 'galio-framework';
+import { Modalize } from 'react-native-modalize';
+import Login from '../Login';
 
 const SLIDES = [
   {
@@ -24,12 +27,19 @@ const SLIDES = [
 ];
 
 function BootScreen(props) {
-  function _renderItem({item, index}) {
+
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
+
+  function _renderItem({ item, index }) {
     return (
       <>
-        <styled.ImageSlideView key={index}>
-          <styled.ImageSlide resizeMode="cover" source={item.image} />
-        </styled.ImageSlideView>
+        <S.ImageSlideView key={index}>
+          <S.ImageSlide resizeMode="cover" source={item.image} />
+        </S.ImageSlideView>
       </>
     );
   }
@@ -40,16 +50,16 @@ function BootScreen(props) {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <styled.Container>
-        <styled.Header>
-          <styled.TextHeader color={'#fff'} size={30}>
+      <S.Container>
+        <S.Header>
+          <S.TextHeader color={'#fff'} size={30}>
             Compre.
-          </styled.TextHeader>
-          <styled.TextHeader color={'#252525'} size={30}>
+          </S.TextHeader>
+          <S.TextHeader color={'#fff'} size={30}>
             {' '}
             Com a melhor.
-          </styled.TextHeader>
-        </styled.Header>
+          </S.TextHeader>
+        </S.Header>
         <Carousel
           ref={refContainer}
           data={SLIDES}
@@ -61,20 +71,27 @@ function BootScreen(props) {
           autoplay={true}
           loop={true}
         />
-        <styled.BoxButtons>
-          <styled.BoxControls>
-            <styled.ButtonsControl onPress={() => snap.snapToPrev()}>
-              <styled.TextControl>{'<'}</styled.TextControl>
-            </styled.ButtonsControl>
-            <styled.ButtonsControl onPress={() => snap.snapToNext()}>
-              <styled.TextControl>{'>'}</styled.TextControl>
-            </styled.ButtonsControl>
-          </styled.BoxControls>
-          <styled.Buttons onPress={() => props.navigation.navigate('Login')}>
-            <styled.TextButtons>Entrar na conta</styled.TextButtons>
-          </styled.Buttons>
-        </styled.BoxButtons>
-      </styled.Container>
+        <S.BoxButtons>
+          <Button color="#fff" shadowless onPress={onOpen}>
+            <S.TextButton>Entrar na conta</S.TextButton>
+          </Button>
+        </S.BoxButtons>
+      </S.Container>
+      <Modalize
+        ref={modalizeRef}
+        scrollViewProps={{ showsVerticalScrollIndicator: false }}
+        snapPoint={450}
+        HeaderComponent={
+          <View>
+            <Text>Header</Text>
+          </View>
+        }
+        withHandle={false}
+      >
+        <S.Background>
+          <Login />
+        </S.Background>
+      </Modalize>
     </>
   );
 }

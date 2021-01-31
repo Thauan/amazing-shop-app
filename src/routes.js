@@ -1,6 +1,18 @@
+import React from 'react';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import {Animated, Easing} from 'react-native';
+import {
+  Animated,
+  Easing,
+  View,
+  Text,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+// import {Creators as favoriteCreators} from '~/store/ducks/favor';
+// import {useDarkMode} from 'react-native-dark-mode';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 // Page imports
 import Login from '~/pages/Login';
@@ -57,44 +69,185 @@ const TransitionConfiguration = () => {
   };
 };
 
-const AuthStackNavigator = createStackNavigator(
-  {
-    Init: {
-      screen: BootScreen,
-      navigationOptions: () => ({
-        headerStyle: {
-          backgroundColor: '#fff',
-        },
-        headerTintColor: '#3f966b',
-        title: 'Amazing Shop',
-      }),
-    },
-    Login: {
-      screen: Login,
-      navigationOptions: () => ({
-        headerStyle: {
-          backgroundColor: '#fff',
-        },
-        headerTintColor: '#3f966b',
-        title: 'Amazing Shop',
-      }),
-    },
+const AuthStackNavigator = createStackNavigator({
+  Init: {
+    screen: BootScreen,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTintColor: '#2e2e97',
+      title: 'Amazing Shop',
+    }),
   },
-  {
-    transitionConfig: TransitionConfiguration,
+  Login: {
+    screen: Login,
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTintColor: '#2e2e97',
+      title: 'Amazing Shop',
+    }),
   },
-);
+});
+
+// let isDarkMode = useDarkMode();
+
+// const MyDrawerNavigator = createDrawerNavigator({
+//   Home: {
+//     screen: Main,
+//     navigationOptions: ({navigate, navigation}, props) => ({
+//       headerRight: (
+//         <View
+//           style={{
+//             marginEnd: 20,
+//             marginTop: Platform === 'ios' ? 25 : 5,
+//             flexDirection: 'row',
+//             justifyContent: 'space-between',
+//             width: 68,
+//           }}>
+//           <TouchableOpacity onPress={() => console.log('toggle favorited')}>
+//             <Icon name={true ? 'heart' : 'heart-o'} size={25} color="#fff" />
+//           </TouchableOpacity>
+//           <View
+//             style={{
+//               backgroundColor: '#ff1759',
+//               width: 15,
+//               height: 15,
+//               borderRadius: 20,
+//               justifyContent: 'center',
+//               alignItems: 'center',
+//               left: 30,
+//               zIndex: 100,
+//             }}>
+//             <Text
+//               style={{
+//                 color: '#fff',
+//                 fontWeight: 'bold',
+//                 fontSize: 10,
+//                 marginBottom: 2,
+//               }}>
+//               7
+//             </Text>
+//           </View>
+//           <TouchableOpacity onPress={() => console.log('toggle favorited')}>
+//             <Icon name={'shopping-bag'} size={25} color="#ffff" />
+//           </TouchableOpacity>
+//         </View>
+//       ),
+//       headerLeft: (
+//         <View style={{marginStart: 20, marginTop: Platform === 'ios' ? 25 : 5}}>
+//           <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+//             <Icon name="bars" size={25} color="#fff" />
+//           </TouchableOpacity>
+//         </View>
+//       ),
+//       headerTitle: (
+//         <View
+//           style={{
+//             flex: 1,
+//             alignItems: 'center',
+//             marginTop: Platform === 'ios' ? 25 : 5,
+//           }}>
+//           <Text style={{fontSize: 22, color: '#fff', fontWeight: 'bold'}}>
+//             Amazing Shop
+//           </Text>
+//         </View>
+//       ),
+//       headerShown: true,
+//       headerTransparent: true,
+//       headerStyle: {
+//         backgroundColor: 'transparent',
+//         zIndex: 100,
+//         shadowOpacity: 0,
+//         borderBottomWidth: 0,
+//       },
+//     }),
+//   },
+//   Login: {
+//     screen: Login,
+//     navigationOptions: () => ({
+//       headerStyle: {
+//         backgroundColor: '#fff',
+//       },
+//       headerTintColor: '#2e2e97',
+//       title: 'Amazing Shop',
+//     }),
+//   },
+// });
 
 const MainStackNavigator = createStackNavigator(
   {
     Main: {
       screen: Main,
-      navigationOptions: () => ({
+      navigationOptions: ({navigate, navigation}, props) => ({
+        headerRight: (
+          <View
+            style={{
+              marginEnd: 20,
+              marginTop: Platform === 'ios' ? 25 : 5,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: 68,
+            }}>
+            <TouchableOpacity onPress={() => console.log('toggle favorited')}>
+              <Icon name={true ? 'heart' : 'heart-o'} size={25} color="#fff" />
+            </TouchableOpacity>
+            <View
+              style={{
+                backgroundColor: '#ff1759',
+                width: 15,
+                height: 15,
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+                left: 30,
+                zIndex: 100,
+              }}>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  fontSize: 10,
+                  marginBottom: 2,
+                }}>
+                7
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => console.log('toggle favorited')}>
+              <Icon name={'shopping-bag'} size={25} color="#ffff" />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: (
+          <View
+            style={{marginStart: 20, marginTop: Platform === 'ios' ? 25 : 5}}>
+            <TouchableOpacity onPress={e => console.log(e)}>
+              <Icon name="bars" size={25} color="#fff" />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: (
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              marginTop: Platform === 'ios' ? 25 : 5,
+            }}>
+            <Text style={{fontSize: 22, color: '#fff', fontWeight: 'bold'}}>
+              Amazing Shop
+            </Text>
+          </View>
+        ),
+        headerShown: true,
+        headerTransparent: true,
         headerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: 'transparent',
+          zIndex: 100,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
         },
-        headerTintColor: '#3f966b',
-        title: 'Amazing Shop',
       }),
     },
   },
@@ -105,8 +258,8 @@ const MainStackNavigator = createStackNavigator(
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Login: AuthStackNavigator,
     Main: MainStackNavigator,
+    Login: AuthStackNavigator,
   }),
 );
 
