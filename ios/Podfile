@@ -21,6 +21,8 @@ target 'AmazingShop' do
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-Core/RCTWebSocket', :path => '../node_modules/react-native/'
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
@@ -38,12 +40,32 @@ target 'AmazingShop' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  post_install do |installer|
+    find_and_replace("../node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m",
+    "_currentFrame.CGImage;","_currentFrame.CGImage ;} else { [super displayLayer:layer];")
+  end
+
+  def find_and_replace(dir, findstr, replacestr)
+    Dir[dir].each do |name|
+        text = File.read(name)
+        replace = text.gsub(findstr,replacestr)
+        if text != replace
+            puts "Fix: " + name
+            File.open(name, "w") { |file| file.puts replace }
+            STDOUT.flush
+        end
+    end
+    Dir[dir + '*/'].each(&method(:find_and_replace))
+  end
+  
   target 'AmazingShopTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
   use_native_modules!
+
+
 end
 
 target 'AmazingShop-tvOS' do

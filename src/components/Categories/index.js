@@ -1,26 +1,38 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import {Button, Block, Card} from 'galio-framework';
+import {Block} from 'galio-framework';
+import { Button, Icon } from 'react-native-elements'
 
 const Categories = () => {
   const data = [
-    {name: 'Camisas', color: '#000'},
-    {name: 'Bermudas', color: '#000'},
-    {name: 'Bonés', color: '#000'},
-    {name: 'Sandalias', color: '#000'},
-    {name: 'Bonés', color: '#000'},
-    {name: 'Sandalias', color: '#000'},
-    {name: 'Bonés', color: '#000'},
-    {name: 'Sandalias', color: '#000'},
+    {name: 'Camisas', color: '#000', icon: 'road'},
+    {name: 'Bermudas', color: '#000', icon: 'road'},
+    {name: 'Bonés', color: '#000', icon: 'road'},
+    {name: 'Sandalias', color: '#000', icon: 'road'},
+    {name: 'Bonés', color: '#000', icon: 'road'},
+    {name: 'Sandalias', color: '#000', icon: 'road'},
+    {name: 'Bonés', color: '#000', icon: 'road'},
+    {name: 'Sandalias', color: '#000', icon: 'road'},
   ];
 
   const renderItem = ({item, index}) => {
     return (
       <Block row center>
-        <Button round size="small" color="#2e2e97" uppercase>
-          {item.name}
-        </Button>
+        <Button
+                  icon={
+                    <Icon
+                      name={item.icon}
+                      type='font-awesome'
+                      color='#fff'
+                    />
+                  }
+                  titleStyle={{ marginRight: 5 }}
+                  buttonStyle={{ color: "#2e2e97", backgroundColor: "#2e2e97", width: "100%", borderRadius: 5, paddingRight: 10 }}
+                  iconRight
+                  title={item.name}
+                  onPress={() => console.log('cliquei na categoria:' + data[index].name)}
+                />
       </Block>
     );
   };

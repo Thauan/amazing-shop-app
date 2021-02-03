@@ -2,18 +2,23 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux'
 
 import Main from '../pages/Main';
 import Login from '../pages/Login';
+Icon.loadFont();
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = props => {
+  const cart = useSelector(state => state.cart);
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: 'transparent',
+          height: 100
         },
         headerTintColor: 'white',
         headerBackTitle: 'Back',
@@ -24,10 +29,9 @@ const MainStackNavigator = props => {
           headerTitle: () => (
             <View
               style={{
-                flex: 1,
                 alignItems: 'center',
-                marginTop: Platform === 'ios' ? 25 : 5,
-                marginEnd: 12
+                marginTop: Platform === 'ios' ? 50 : 5,
+                marginEnd: 12,
                 // borderColor: 'red', borderWidth: 2
               }}>
               <Text style={{fontSize: 22, color: '#fff', fontWeight: 'bold'}}>
@@ -59,7 +63,7 @@ const MainStackNavigator = props => {
                 padding: 10,
                 // borderColor: 'red', borderWidth: 2
               }}>
-              <TouchableOpacity onPress={() => console.log('toggle favorited')}>
+              <TouchableOpacity onPress={() => console.log('teste')}>
                 <Icon
                   name={true ? 'heart' : 'heart-o'}
                   size={25}
@@ -84,7 +88,7 @@ const MainStackNavigator = props => {
                     fontSize: 10,
                     marginBottom: 2,
                   }}>
-                  7
+                  {cart.countCart}
                 </Text>
               </View>
               <TouchableOpacity onPress={() => console.log('toggle favorited')}>

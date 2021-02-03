@@ -18,6 +18,8 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 import Login from '~/pages/Login';
 import BootScreen from '~/pages/BootScreen';
 import Main from '~/pages/Main';
+Icon.loadFont();
+
 
 let SlideFromRight = (index, position, width) => {
   // const inputRange = [index - 1, index, index + 1];
@@ -222,7 +224,7 @@ const MainStackNavigator = createStackNavigator(
         ),
         headerLeft: (
           <View
-            style={{marginStart: 20, marginTop: Platform === 'ios' ? 25 : 5}}>
+            style={{marginStart: 20, marginTop: Platform === 'ios' ? 25 : 5 }}>
             <TouchableOpacity onPress={e => console.log(e)}>
               <Icon name="bars" size={25} color="#fff" />
             </TouchableOpacity>
@@ -244,6 +246,9 @@ const MainStackNavigator = createStackNavigator(
         headerTransparent: true,
         headerStyle: {
           backgroundColor: 'transparent',
+          height: 200,
+          borderColor: 'red',
+          borderWidth: 2,
           zIndex: 100,
           shadowOpacity: 0,
           borderBottomWidth: 0,

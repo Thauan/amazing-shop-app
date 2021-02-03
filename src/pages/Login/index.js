@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import * as styled from './styles';
 import {StatusBar, Platform} from 'react-native';
 import {connect} from 'react-redux';
-import {Creators as authCreators} from '~/store/ducks/auth';
+// import {Creators as authCreators} from '~/store/ducks/auth';
 
 const logo = require('../../assets/shopping-bag-two.png');
 
@@ -11,7 +11,7 @@ function Login(props) {
   const [password, setPassword] = useState('secret');
 
   function authLogin() {
-    props.dispatch(authCreators.login(email, password));
+    // props.dispatch(authCreators.login(email, password));
   }
 
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 10;
