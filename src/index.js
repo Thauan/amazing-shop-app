@@ -1,14 +1,18 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
+import {InAppNotificationProvider} from 'react-native-in-app-notification';
+import {NavigationContainer} from '@react-navigation/native';
+import DrawerNavigator from './navigation/DrawerNavigator';
 import store from './store';
-import { NavigationContainer } from "@react-navigation/native";
-
-import DrawerNavigator from "./navigation/DrawerNavigator";
+import './config/ReactotronConfig';
+import Notification from './notification/default';
 
 const App = () => (
   <Provider store={store}>
     <NavigationContainer>
-      <DrawerNavigator />
+      <InAppNotificationProvider notificationBodyComponent={Notification} backgroundColour={'#fff'}>
+        <DrawerNavigator />
+      </InAppNotificationProvider>
     </NavigationContainer>
   </Provider>
 );

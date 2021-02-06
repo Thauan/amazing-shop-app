@@ -2,16 +2,21 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View, Text, TouchableOpacity, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-import Main from '../pages/Main';
-import Login from '../pages/Login';
+import Main from '../screens/Home';
+import Login from '../screens/Login';
 Icon.loadFont();
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = props => {
+  const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
+
+  function modalCart() {
+    dispatch({ type: 'SHOW_MODAL_CART' });
+  }
 
   return (
     <Stack.Navigator
@@ -34,7 +39,7 @@ const MainStackNavigator = props => {
                 marginEnd: 12,
                 // borderColor: 'red', borderWidth: 2
               }}>
-              <Text style={{fontSize: 22, color: '#fff', fontWeight: 'bold'}}>
+              <Text style={{fontSize: 22, color: '#fff', fontWeight: 'bold', opacity: cart.modalCart === true ? 0.2 : 1}}>
                 Amazing Shop
               </Text>
             </View>
@@ -48,7 +53,7 @@ const MainStackNavigator = props => {
               // borderColor: 'red', borderWidth: 2
               }}>
               <TouchableOpacity onPress={() => props.navigation.toggleDrawer()}>
-                <Icon name="bars" size={25} color="#fff" />
+                <Icon name="bars" size={25} color="#fff" style={{ opacity: cart.modalCart === true ? 0.2 : 1 }} />
               </TouchableOpacity>
             </View>
           ),
@@ -63,11 +68,12 @@ const MainStackNavigator = props => {
                 padding: 10,
                 // borderColor: 'red', borderWidth: 2
               }}>
-              <TouchableOpacity onPress={() => console.log('teste')}>
+              <TouchableOpacity onPress={() => console.log('favorite')}>
                 <Icon
                   name={true ? 'heart' : 'heart-o'}
                   size={25}
                   color="#fff"
+                  style={{ opacity: cart.modalCart === true ? 0.2 : 1 }} 
                 />
               </TouchableOpacity>
               <View
@@ -80,6 +86,7 @@ const MainStackNavigator = props => {
                   alignItems: 'center',
                   left: 30,
                   zIndex: 100,
+                  opacity: cart.modalCart === true ? 0.8 : 1
                 }}>
                 <Text
                   style={{
@@ -87,12 +94,13 @@ const MainStackNavigator = props => {
                     fontWeight: 'bold',
                     fontSize: 10,
                     marginBottom: 2,
+                    // opacity: cart.modalCart === true ? 0.3 : 1
                   }}>
                   {cart.countCart}
                 </Text>
               </View>
-              <TouchableOpacity onPress={() => console.log('toggle favorited')}>
-                <Icon name={'shopping-bag'} size={25} color="#ffff" />
+              <TouchableOpacity onPress={() => modalCart()}>
+                <Icon name={'shopping-bag'} size={25} color="#ffff" style={{ opacity: cart.modalCart === true ? 0.2 : 1 }}/>
               </TouchableOpacity>
             </View>
           ),
