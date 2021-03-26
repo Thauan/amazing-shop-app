@@ -45,6 +45,12 @@ export default function cart(state = INITIAL_STATE, action) {
   }
 }
 
+// const result = input.reduce((total, value) => {
+//   total[value] = (total[value] || 0) + 1;
+//   return total;
+// }, {});
+// console.log(result);
+
 // export const Creators = {
 //   addToCart: (product) => ({
 //     type: "ADD_TO_CART",
