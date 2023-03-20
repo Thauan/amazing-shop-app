@@ -1,32 +1,38 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Text, TextInput} from 'react-native';
+import {
+  NativeSyntheticEvent,
+  TextInput,
+  TextInputChangeEventData,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {CloseBox, CloseButton, Search} from './styles';
 
-const SearchBar = ({toggle, search}: any) => {
+const SearchBar = ({search}: any) => {
   const inputRef = useRef<any>(null);
-  const [searchInput, setSearchInput] = useState('');
+  const [textSearch, setTextSearch] = useState('');
 
   useEffect(() => {
-    if (search === true) {
+    if (search) {
       inputRef.current.focus();
     }
   }, [search]);
+
+  const searchBy = (text: string) => {
+    console.log(text);
+  };
 
   return (
     <Search>
       <TextInput
         ref={inputRef}
-        style={{height: 50, paddingStart: 15}}
+        style={{height: 50, paddingStart: 15, fontSize: 16}}
         placeholder="Buscar por produtos, categorias ou marcas"
-        value={searchInput}
-        onChange={(e: any) => setSearchInput(e.target.value)}
+        value={textSearch}
+        onChange={(event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+          setTextSearch(event.nativeEvent.text);
+        }}
       />
-      <CloseButton
-        onPress={() => {
-          toggle();
-          inputRef.current.clear();
-        }}>
+      <CloseButton onPress={() => searchBy(textSearch)}>
         <CloseBox>
           <Icon name="search" size={23} color="#fff" />
         </CloseBox>
