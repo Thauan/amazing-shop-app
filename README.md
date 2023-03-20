@@ -2,8 +2,7 @@
 
 Este é um aplicativo de loja virtual desenvolvido em React Native. O aplicativo tem uma interface interativa e componentes animados que tornam a experiência do usuário mais agradável e atraente.
 
-<img src="https://imgur.com/TrDDjBQ.png" width="300"/>
-<img src="https://i.imgur.com/MWesr8K.png" width="300"/>
+<img src="https://imgur.com/TrDDjBQ.png" width="300"/><img src="https://i.imgur.com/MWesr8K.png" width="300" hspace="20" />
 
 ## Instalação
 
